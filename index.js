@@ -1,6 +1,7 @@
 import express from "express";
 import Genero from './models/Genero.js';
 import Musica from './models/Musica.js';
+import Artista from './models/Artista.js';
 
 const app = express();
 const PORT = 3000;
@@ -25,29 +26,58 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-//Rotas do gênero
+//***********************************************************8
+//                     Rotas do GENERO
+//************************************************************* */
 app.get("/genero/lst", async (req, res) => {
-  const generos = await Genero.find()
-  res.render("genero/lst", {generos});
+  const genero = await Genero.find()
+  res.render("genero/lst", {genero});
 });
 
-app.get("/genero/add",  (req, res) => {
-
+app.get("/genero/add", (req, res) => {
   res.render("genero/add");
 });
 
 app.post("/genero/add", async (req, res) => {
-  const nome = req.body.nome;
-  //grava no banco de dados(Mongo)
-  await Genero.create({nome});
+  const {nome} = req.body;
+  await Genero.create({nome})
   res.render("genero/addok");
 });
 
-//Rotas de música
+// EXCLUIR
+app.get('/genero/del/:id', async (req, res) => {
+  const genero = await Genero.findByIdAndDelete(req.params.id)
+  res.redirect("/genero/lst");
+});
 
+// EDITAR
+app.get('/genero/edt/:id', async (req, res) => {
+  const genero = await Genero.findById(req.params.id)
+  res.render("genero/edt", {genero})
+
+});
+app.post('/genero/edt/:id', async (req, res) => {
+  const genero = await Genero.findByIdAndUpdate(req.params.id, req.body)
+  res.render("genero/edtok")
+
+}); 
+
+
+
+
+
+
+
+
+
+
+
+//***********************************************************8
+//                     Rotas da MUSICA
+//************************************************************* */
 app.get("/musica/lst", async (req, res) => {
-  const musicas = await Musica.find()
-  res.render("musica/lst", {musicas});
+  const musica = await Musica.find()
+  res.render("musica/lst", {musica});
 });
 
 app.get("/musica/add", (req, res) => {
@@ -55,40 +85,71 @@ app.get("/musica/add", (req, res) => {
 });
 
 app.post("/musica/add", async (req, res) => {
-  const {nome, duracao, artista, anoLancamento} = req.body;
-  await Musica.create({nome, duracao, artista, anoLancamento})
+  const {nome, artista, anoLancamento, duracao} = req.body;
+  await Musica.create({nome, artista, anoLancamento, duracao})
   res.render("musica/addok");
 });
 
-
-
-
-
-
-
-app.get("/cadastro", (req, res) => {
-  res.render("cadastro");
+// EXCLUIR
+app.get('/musica/del/:id', async (req, res) => {
+  const musica = await Musica.findByIdAndDelete(req.params.id)
+  res.redirect("/musica/lst");
 });
 
-app.post("/cadastro", (req, res) => {
-  res.render("cadastrook");
+// EDITAR
+app.get('/musica/edt/:id', async (req, res) => {
+  const musica = await Musica.findById(req.params.id)
+  res.render("musica/edt", {musica})
+
 });
 
-app.get("/detalhe", (req, res) => {
-  res.render("detalhe");
-});
-app.get("/lista", (req, res) => {
-  res.render("lista");
-});
+//***********************************************************8
+//                     Rotas do ARTISTA
+//************************************************************* */
 
-
-// Rotas do Artista
 app.get("/artista", async (req, res) => {
- const artistas = await Artista.find()
- res.render("artista/lsta", {artistas});
+  const artista = await Artista.find()
+  res.render("artista/lst", {artista});
 });
 
-app.listen(PORT, ()=>{
- console.log(
-    `Servidor rodando em http://localhost:${PORT}`)
+app.get("/artista/add", (req, res) => {
+  res.render("artista/add");
 });
+
+app.post("/artista/add", async (req, res) => {
+  const {nome, pais, anoInicio} = req.body;
+  await Artista.create({nome, pais, anoInicio})
+  res.render("artista/addok");
+});
+
+// EXCLUIR
+app.get('/artista/del/:id', async (req, res) => {
+  const artista = await Artista.findByIdAndDelete(req.params.id)
+  res.redirect("/artista");
+});
+
+// EDITAR
+app.get('/artista/edt/:id', async (req, res) => {
+  const artista = await Artista.findById(req.params.id)
+  res.render("artista/edt", {artista})
+
+});
+app.post('/artista/edt/:id', async (req, res) => {
+  const artista = await Artista.findByIdAndUpdate(req.params.id, req.body)
+  res.render("artista/edtok")
+
+}); 
+
+
+
+
+
+
+
+
+
+
+app.listen(PORT, () => {
+  console.log(`Servidor rodando em http://localhost:${PORT}`);
+});
+  

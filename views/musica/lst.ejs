@@ -2,6 +2,7 @@
 <%- include('../cabecalho.ejs')%>
 
     <main class="container">
+        
         <div class="page-header">
             <h2>Lista de Músicas</h2>
             <a href="/musica/add" class="btn btn-success">+ Nova Música</a>
@@ -10,24 +11,31 @@
         <div class="table-container">
             <table>
                 <thead>
+
                     <tr>
                         <th>Nome</th>
                         <th>Artista</th>
                         <th>Ano Lançamento</th>
                         <th>Duração</th>
                         <th>Ações</th>
+                        <th>Mais Ações</th>
+                       
+                         
                     </tr>
-                </thead>
+                </thead>   
                 <tbody>
-                    <%musicas.forEach(musica=>{%>
+                    
+                    <%musica.forEach(musica=>{%>
                    
                     <tr>
                         <td> <%=musica.nome%></td>
                         <td> <%=musica.artista%></td>
                         <td><%=musica.anoLancamento%></td>
                         <td><%=musica.duracao%></td>
-                        <td><a href="artista-detalhes.html?id=1" 
-                        class="link">Ver Detalhes</a></td>
+                     
+                         
+                        <td><a href="/musica/del/<%=musica.id%>" class="link">EXCLUIR</a></td>
+                        <td><a href="/musica/edt/<%=musica.id%>" class="link">EDITAR</a></td>
                     </tr>
                     <%})%>
                     <tr>

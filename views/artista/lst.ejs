@@ -4,8 +4,8 @@
     <main class="container">
         
         <div class="page-header">
-            <h2>Lista de Gêneros</h2>
-            <a href="/genero/add" class="btn btn-success">+ Novo Gênero</a>
+            <h2>Lista de Artistas</h2>
+            <a href="/artista/add" class="btn btn-success">+ Novo Artista</a>
         </div>
 
         <div class="table-container">
@@ -14,22 +14,24 @@
 
                     <tr>
                         <th>Nome</th>
-                         <th>Ações</th>
+                        <th>País</th>
+                        <th>Ano de Início</th>
+                        <th>Ações</th>
                         <th>Mais Ações</th>
-                     
                        
                          
                     </tr>
                 </thead>   
                 <tbody>
                     
-                    <%genero.forEach(genero=>{%>
+                    <%artista.forEach(artista=>{%>
                    
                     <tr>
-                        <td> <%=genero.nome%></td>
-                        
-                        <td><a href="/genero/del/<%=genero.id%>" class="link">EXCLUIR</a></td>
-                        <td><a href="/genero/edt/<%=genero.id%>" class="link">EDITAR</a></td>
+                        <td> <%=artista.nome%></td>
+                        <td> <%=artista.pais%></td>
+                        <td><%=artista.anoInicio%></td>
+                        <td><a href="/artista/del/<%=artista.id%>" class="link">EXCLUIR</a></td>
+                        <td><a href="/artista/edt/<%=artista.id%>" class="link">EDITAR</a></td>
                         
                     </tr>
                     <%})%>

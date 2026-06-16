@@ -1,0 +1,25 @@
+<%-include('../cabecalho.ejs')%>
+ <header>
+        <h3>Editar Artista</h3>
+      </header>
+      <div class="content">
+        <form id="form-instrumento" method="post" autocomplete="off" >
+          <div class="grid">
+            <div>
+              <label for="nome">Nome do Artista</label>
+              <input id="id" value="<%=artista.nome%>" name="nome" type="text" placeholder="Ex:dojacat" required>
+            </div>
+            <div>
+              <label for="nome">País</label>
+              <input id="nome" value="<%=artista.pais%>" name="pais" type="text" placeholder="Ex:EUA" required>
+            </div>
+           <div class="field-help">Ano início do artista</div>
+            <input id="ano" value="<%=artista.ano%>" name="ano" type="text" placeholder="Ex:1998" required>
+          <footer>
+            <a type="button" class="btn ghost" id="btn-cancelar" href="/artista/lst">Cancelar</a>
+            <button type="submit" class="btn primary">Editar Artista</button>
+          </footer>
+        </form>
+      </div>
+
+  <%-include('../rodape.ejs')%>

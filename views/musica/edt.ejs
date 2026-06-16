@@ -1,0 +1,28 @@
+<%-include('../cabecalho.ejs')%>
+ <header>
+        <h3>Editar Música</h3>
+      </header>
+      <div class="content">
+        <form id="form-musica" method="post" autocomplete="off" >
+          <div class="grid">
+            <div>
+              <label for="nome">Artista</label>
+             <input id="id" value="<%=artista.nome%>" name="nome" type="text" placeholder="Ex:dojacat" required>
+            </div>
+           <div>
+              <label for="nome">Artista</label>
+              <input id="id" value="<%=artista.nome%>" name="nome" type="text" placeholder="Ex:dojacat" required>
+            </div>
+           
+              <label for="nome">Duração</label>
+              <input id="id" value="<%=duracao.number%>" number="duracao" type="text" placeholder="Ex:2:00" required>
+        
+            </div>
+          <footer>
+            <a type="button" class="btn ghost" id="btn-cancelar" href="/artista/lst">Cancelar</a>
+            <button type="submit" class="btn primary">Editar Música</button>
+          </footer>
+        </form>
+      </div>
+
+  <%-include('../rodape.ejs')%>
