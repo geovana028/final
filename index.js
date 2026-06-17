@@ -97,12 +97,17 @@ app.get('/musica/del/:id', async (req, res) => {
 });
 
 // EDITAR
+// EDITAR
 app.get('/musica/edt/:id', async (req, res) => {
   const musica = await Musica.findById(req.params.id)
   res.render("musica/edt", {musica})
 
 });
+app.post('/musica/edt/:id', async (req, res) => {
+  const musica = await Musica.findByIdAndUpdate(req.params.id, req.body)
+  res.render("musica/edtok")
 
+}); 
 //***********************************************************8
 //                     Rotas do ARTISTA
 //************************************************************* */

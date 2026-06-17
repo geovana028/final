@@ -25,17 +25,17 @@
                 </thead>   
                 <tbody>
                     
-                    <%musica.forEach(musica=>{%>
+                    <%musica.forEach(m=>{%>
                    
                     <tr>
-                        <td> <%=musica.nome%></td>
-                        <td> <%=musica.artista%></td>
-                        <td><%=musica.anoLancamento%></td>
-                        <td><%=musica.duracao%></td>
+                        <td> <%=m.nome%></td>
+                        <td> <%=m.artista%></td>
+                        <td><%=m.anoLancamento%></td>
+                        <td><%=m.duracao%></td>
                      
                          
-                        <td><a href="/musica/del/<%=musica.id%>" class="link">EXCLUIR</a></td>
-                        <td><a href="/musica/edt/<%=musica.id%>" class="link">EDITAR</a></td>
+                        <td><a href="/musica/del/<%=m.id%>" class="link">EXCLUIR</a></td>
+                        <td><a href="/musica/edt/<%=m.id%>" class="link">EDITAR</a></td>
                     </tr>
                     <%})%>
                     <tr>

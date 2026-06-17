@@ -6,20 +6,23 @@
         <form id="form-musica" method="post" autocomplete="off" >
           <div class="grid">
             <div>
-              <label for="nome">Artista</label>
-             <input id="id" value="<%=artista.nome%>" name="nome" type="text" placeholder="Ex:dojacat" required>
+              <label for="musica">Nome da Música</label>
+              <input id="id" value="<%=musica.nome%>" name="nome" type="text" placeholder="Ex:Streets" required>
             </div>
            <div>
-              <label for="nome">Artista</label>
-              <input id="id" value="<%=artista.nome%>" name="nome" type="text" placeholder="Ex:dojacat" required>
+              <label for="artista">Artista</label>
+              <input id="id" value="<%=musica.artista%>" name="artista" type="text" placeholder="Ex:dojacat" required>
             </div>
-           
-              <label for="nome">Duração</label>
-              <input id="id" value="<%=duracao.number%>" number="duracao" type="text" placeholder="Ex:2:00" required>
+             <div>
+              <label for="anoLancamento">Ano de Lançamento</label>
+              <input id="id" value="<%=musica.anoLancamento.ano%>" number="anoLancamento" type="text" placeholder="Ex:2021" required>
+            </div>
+              <label for="duracao">Duração</label>
+              <input id="id" value="<%=musica.duracao%>" number="duracao" type="text" placeholder="Ex:2:00" required>
         
             </div>
           <footer>
-            <a type="button" class="btn ghost" id="btn-cancelar" href="/artista/lst">Cancelar</a>
+            <a type="button" class="btn ghost" id="btn-cancelar" href="/musica/lst">Cancelar</a>
             <button type="submit" class="btn primary">Editar Música</button>
           </footer>
         </form>
